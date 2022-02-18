@@ -80,14 +80,21 @@ public class PanelBD extends javax.swing.JDialog {
             System.out.println("Error");
             System.out.println(e);
             System.out.println("Error");
+            JOptionPane.showMessageDialog(null,"No se han encontrado productos relacionados");
         }
-         System.out.println(datos2.get(0).get(1));
+         //System.out.println(datos2.get(0).get(1));
+         if(datos2.size()>0){
+            
+        
         
          PanelRelacional dialog;
          //dialog = new PanelRelacional(new javax.swing.JDialog() , rootPaneCheckingEnabled);
         dialog = new PanelRelacional(new javax.swing.JDialog(), true,datos2);
          System.out.println("testpanel");
-        dialog.setVisible(true);
+        dialog.setVisible(true);}
+         else{
+             JOptionPane.showMessageDialog(null,"No se han encontrado productos relacionados");
+         }
          
         return datos2;
     }
@@ -124,6 +131,9 @@ public class PanelBD extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel1MouseEntered(evt);
             }
@@ -165,6 +175,9 @@ public class PanelBD extends javax.swing.JDialog {
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 255));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel3MouseEntered(evt);
             }
@@ -231,7 +244,8 @@ public class PanelBD extends javax.swing.JDialog {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
 panelMostrar.setVisible(true);
 panelInsertar.setVisible(false);// TODO add your handling code here:
-ConexionNTB.mostrardatos();
+//ConexionNTB.mostrardatos();
+
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
@@ -257,6 +271,16 @@ jPanel3.setBackground(exited);
     private void jLabel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseEntered
          jPanel3.setBackground(entered);
     }//GEN-LAST:event_jLabel2MouseEntered
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+      panelInsertar.setVisible(true);
+     panelMostrar.setVisible(false);
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+       panelInsertar.setVisible(false);
+     panelMostrar.setVisible(true);
+    }//GEN-LAST:event_jPanel3MouseClicked
 
     /**
      * @param args the command line arguments

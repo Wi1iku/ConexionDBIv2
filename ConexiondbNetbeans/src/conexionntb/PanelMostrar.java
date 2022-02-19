@@ -44,7 +44,7 @@ Color defaultColor = new Color(214,217,223);
         for(ArrayList<String> dato:datosmetodo){
         jPanel29.add(new PanelDatos(dato.get(0), dato.get(1), dato.get(2), dato.get(3)));
         heightpanel+=38;
-            System.out.println("test22222222222");
+            //System.out.println("test22222222222");
         }
         jPanel29.setBounds(0, 0, 657, heightpanel);
         
@@ -92,6 +92,24 @@ ArrayList<ArrayList<String>> datosmetodo = new ArrayList();
                 JOptionPane.showMessageDialog(null,"update!");
             }
         });
+    }
+    void actualizardatos(){
+    ArrayList<ArrayList<String>> datosmetodo = new ArrayList();
+        int heightpanel=0;
+        jPanel29.removeAll();
+        datosmetodo=mostrardatos();
+             System.out.println(datosmetodo.size()+"numero de filas1");
+        for(ArrayList<String> dato:datosmetodo){
+            System.out.println("test1");
+        jPanel29.add(new PanelDatos(dato.get(0), dato.get(1), dato.get(2), dato.get(3)), jPanel29);
+        
+        //heightpanel+=38;
+        System.out.println("test1");
+        }
+        jPanel29.setBounds(0, 0, 657, heightpanel);
+        jPanel29.repaint();
+        jPanel29.revalidate();
+        System.out.println(datosmetodo.size()+"numero de filas2");
     }
 
     /**
@@ -191,7 +209,7 @@ ArrayList<ArrayList<String>> datosmetodo = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel29;
+    public static javax.swing.JPanel jPanel29;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JPopupMenu menu;

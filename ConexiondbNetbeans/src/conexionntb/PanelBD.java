@@ -91,7 +91,10 @@ public class PanelBD extends javax.swing.JDialog {
          //dialog = new PanelRelacional(new javax.swing.JDialog() , rootPaneCheckingEnabled);
         dialog = new PanelRelacional(new javax.swing.JDialog(), true,datos2);
          System.out.println("testpanel");
-        dialog.setVisible(true);}
+        dialog.setVisible(true);
+         dialog.setSize(600,600);
+         dialog.repaint();
+         dialog.revalidate();}
          else{
              JOptionPane.showMessageDialog(null,"No se han encontrado productos relacionados");
          }

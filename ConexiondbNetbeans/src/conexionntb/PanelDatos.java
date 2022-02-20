@@ -100,6 +100,21 @@ public class PanelDatos extends JPanel{
                 }
             }
         }   );
+         modify.addActionListener(new java.awt.event.ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    DialogoModify dialogoModify;
+                    dialogoModify = new DialogoModify(new javax.swing.JDialog(), true, dato1,dato2,dato3,dato4);
+                    dialogoModify.setVisible(true);
+                    
+                    
+                } catch (Exception ex) {
+                    //Logger.getLogger(PanelDatos.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null,"Error al modificar entrada");
+                }
+            }
+        }   );
         
     }
 

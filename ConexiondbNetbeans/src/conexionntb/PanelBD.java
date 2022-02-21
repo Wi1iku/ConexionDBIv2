@@ -74,7 +74,7 @@ public class PanelBD extends javax.swing.JDialog {
             datos2.get(i).add(result.getString(3));
             i++;
             }
-            System.out.println("testrelacionado");
+            //System.out.println("testrelacionado");
             
         } catch (Exception e) {
             System.out.println("Error");
@@ -90,7 +90,7 @@ public class PanelBD extends javax.swing.JDialog {
          PanelRelacional dialog;
          //dialog = new PanelRelacional(new javax.swing.JDialog() , rootPaneCheckingEnabled);
         dialog = new PanelRelacional(new javax.swing.JDialog(), true,datos2);
-         System.out.println("testpanel");
+        //System.out.println("testpanel");
         dialog.setVisible(true);
          dialog.setSize(600,600);
          dialog.repaint();

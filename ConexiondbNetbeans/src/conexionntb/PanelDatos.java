@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -54,8 +55,8 @@ public class PanelDatos extends JPanel{
         jLabel3.setText(dato3);
         jLabel4.setText(dato4);
         claveforanea=dato1;
-        JMenuItem delete = new JMenuItem("Borrar");
-        JMenuItem modify = new JMenuItem("Modificar");
+        JMenuItem delete = new JMenuItem("Borrar", new ImageIcon(this.getClass().getResource("/res/delete.png")));
+        JMenuItem modify = new JMenuItem("Modificar", new ImageIcon(this.getClass().getResource("/res/modify.png")));
                    menu.add(delete);
                    menu.add(modify)
                            ;
@@ -64,12 +65,15 @@ public class PanelDatos extends JPanel{
 
         //this.add(menu); esto si se añade mueve el texto
         this.addMouseListener(new java.awt.event.MouseAdapter() {
+        @Override
         public void mouseEntered(java.awt.event.MouseEvent evt) {
                 MouseEntered(evt);
             }
+        @Override
         public void mouseExited(java.awt.event.MouseEvent evt) {
                 MouseExited(evt);
             }
+        @Override
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             
             
@@ -90,8 +94,14 @@ public class PanelDatos extends JPanel{
                     PreparedStatement st;
                     String sql = "DELETE FROM productos WHERE productos.Id ="+dato1;
                     st = ConexionNTB.con.prepareStatement(sql);
-                    st.execute();
-                    //JOptionPane.showMessageDialog(null,"Datos borrados, pulsa el boton de actualizar");
+                    
+                    int input=
+                    JOptionPane.showConfirmDialog(null,"Estas seguro que querer eliminar los datos de la fila "+dato1+"?","Alerta",JOptionPane.YES_NO_OPTION);
+                    if (input==JOptionPane.YES_OPTION) {
+                        JOptionPane.showMessageDialog(null,"Fila "+dato1+" borrada","Alerta",JOptionPane.WARNING_MESSAGE);
+                        st.execute();
+                    }else{JOptionPane.showMessageDialog(null,"Fila "+dato1+" no ha sido borrada","Alerta",JOptionPane.WARNING_MESSAGE);}
+                    
                     actualizardatos();
                     
                 } catch (SQLException ex) {
@@ -142,18 +152,18 @@ public class PanelDatos extends JPanel{
         int heightpanel=0;
         PanelMostrar.jPanel29.removeAll();
         datosmetodo=mostrardatos();
-             System.out.println(datosmetodo.size()+"numero de filas1");
+            // System.out.println(datosmetodo.size()+"numero de filas1");
         for(ArrayList<String> dato:datosmetodo){
-            System.out.println("test1");
+           // System.out.println("test1");
         PanelMostrar.jPanel29.add(new PanelDatos(dato.get(0), dato.get(1), dato.get(2), dato.get(3)));
         
         //heightpanel+=38;
-        System.out.println("test1");
+        //System.out.println("test1");
         }
         PanelMostrar.jPanel29.setBounds(0, 0, 657, heightpanel);
         PanelMostrar.jPanel29.repaint();
         PanelMostrar.jPanel29.revalidate();
-        System.out.println(datosmetodo.size()+"numero de filas2");
+        //System.out.println(datosmetodo.size()+"numero de filas2");
     }
      public ArrayList<ArrayList<String>> mostrardatos(){
      String sql = "SELECT * FROM productos";
@@ -175,14 +185,14 @@ ArrayList<ArrayList<String>> datosmetodo = new ArrayList();
               datosmetodo.get(i).add(result.getString(4));
                i++;  
            }
-           System.out.println("test");
+          // System.out.println("test");
        } catch (SQLException ex) {
            System.out.println("ex");
            System.out.println("error");
            
            
        }
-       System.out.println(datosmetodo.get(0).get(1));
+       //System.out.println(datosmetodo.get(0).get(1));
       return datosmetodo;
        
     }

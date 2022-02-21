@@ -32,7 +32,7 @@ Color defaultColor = new Color(214,217,223);
      */
     public PanelMostrar() {
         int heightpanel=0;
-        System.out.println("test111111111111111111");
+       // System.out.println("test111111111111111111");
         initComponents();
         /*PanelDatos jPanelnuevo= new PanelDatos("IdProd", "Nombre", "Precio", "Categoria");
         jPanel29.add(new PanelDatos("IdProd", "Nombre", "Precio", "Categoria"));*/
@@ -70,14 +70,14 @@ ArrayList<ArrayList<String>> datosmetodo = new ArrayList();
               datosmetodo.get(i).add(result.getString(4));
                i++;  
            }
-           System.out.println("test");
+          // System.out.println("test");
        } catch (SQLException ex) {
            System.out.println("ex");
            System.out.println("error");
            
            
        }
-       System.out.println(datosmetodo.get(0).get(1));
+       //System.out.println(datosmetodo.get(0).get(1));
       return datosmetodo;
        
     }
@@ -100,16 +100,16 @@ ArrayList<ArrayList<String>> datosmetodo = new ArrayList();
         datosmetodo=mostrardatos();
              System.out.println(datosmetodo.size()+"numero de filas1");
         for(ArrayList<String> dato:datosmetodo){
-            System.out.println("test1");
+           // System.out.println("test1");
         jPanel29.add(new PanelDatos(dato.get(0), dato.get(1), dato.get(2), dato.get(3)), jPanel29);
         
         //heightpanel+=38;
-        System.out.println("test1");
+       // System.out.println("test1");
         }
         jPanel29.setBounds(0, 0, 657, heightpanel);
         jPanel29.repaint();
         jPanel29.revalidate();
-        System.out.println(datosmetodo.size()+"numero de filas2");
+        //System.out.println(datosmetodo.size()+"numero de filas2");
     }
 
     /**
@@ -193,11 +193,11 @@ ArrayList<ArrayList<String>> datosmetodo = new ArrayList();
         datosmetodo=mostrardatos();
              System.out.println(datosmetodo.size()+"numero de filas1");
         for(ArrayList<String> dato:datosmetodo){
-            System.out.println("test1");
+           // System.out.println("test1");
         jPanel29.add(new PanelDatos(dato.get(0), dato.get(1), dato.get(2), dato.get(3)));
         
         //heightpanel+=38;
-        System.out.println("test1");
+       // System.out.println("test1");
         }
         jPanel29.setBounds(0, 0, 657, heightpanel);
         jPanel29.repaint();

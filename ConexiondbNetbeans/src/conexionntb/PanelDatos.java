@@ -109,9 +109,12 @@ public class PanelDatos extends JPanel{
                     dialogoModify.setVisible(true);
                     
                     
+                    
+                    actualizardatos();
                 } catch (Exception ex) {
                     //Logger.getLogger(PanelDatos.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(null,"Error al modificar entrada");
+                    
                 }
             }
         }   );

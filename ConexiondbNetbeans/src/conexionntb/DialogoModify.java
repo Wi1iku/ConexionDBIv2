@@ -56,6 +56,14 @@ public class DialogoModify extends javax.swing.JDialog {
         jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Modificar datos");
@@ -84,9 +92,9 @@ public class DialogoModify extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
@@ -98,12 +106,8 @@ public class DialogoModify extends javax.swing.JDialog {
                             .addComponent(jTextField3)
                             .addComponent(jTextField2)
                             .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)))
+                    .addComponent(jButton1)
+                    .addComponent(jLabel2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 237, Short.MAX_VALUE)
@@ -143,18 +147,42 @@ public class DialogoModify extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            dato1=jTextField1.getText();
-            dato2=jTextField2.getText();
-            dato3=jTextField3.getText();
-            dato4=jTextField4.getText();
+            dato1=jTextField4.getText();
+            dato2=jTextField3.getText();
+            dato3=jTextField2.getText();
+            dato4=jTextField1.getText();
             PreparedStatement st;
-            String sql=("UPDATE productos SET Id = "+dato1+", Nombre = "+dato2+", Precio = "+dato3+", Categoria = +"dato4+" WHERE productos.Id ="+claveforanea+"asd");
+            if(!dato1.equals(claveforanea)){
+               int input=JOptionPane.showConfirmDialog(null,"Aviso, vas a cambiar la clave principal \"ID\", Estas seguro?");
+                if(input==1 || input==2){
+                    dato1=claveforanea;
+                }else{
+                
+                }
+            }
+            System.out.println(claveforanea);
+            System.out.println(dato1);
+            String sql="UPDATE productos SET Id = "+dato1+", Nombre = '"+dato2+"', Precio = "+dato3+", Categoria = '"+dato4+"' WHERE productos.Id = "+claveforanea;
+            
+            st=ConexionNTB.con.prepareStatement(sql);
+            st.execute();
+           // actualizardatos();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,"Error al modificar la entrada");
+            JOptionPane.showMessageDialog(null,"Error al modificar la entrada.");
+            System.out.println(e);
         }finally{
-        System.exit(0);
+            dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+     
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+
+
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -191,7 +219,7 @@ public class DialogoModify extends javax.swing.JDialog {
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
+                      
                     }
                 });
                 

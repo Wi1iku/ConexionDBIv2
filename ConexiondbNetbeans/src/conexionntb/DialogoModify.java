@@ -156,6 +156,7 @@ public class DialogoModify extends javax.swing.JDialog {
                int input=JOptionPane.showConfirmDialog(null,"Aviso, vas a cambiar la clave principal \"ID\", Estas seguro?");
                 if(input==1 || input==2){
                     dato1=claveforanea;
+                    //testgit
                 }else{
                 
                 }
